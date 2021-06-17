@@ -11,6 +11,7 @@ The following are things I use which this repo contains files for:
 - [matplotlib](https://github.com/matplotlib/matplotlib)
 - [picom](https://github.com/jonaburg/picom)
 - [zathura](https://github.com/pwmt/zathura)
+- Custom scripts
 
 ## Screenshots
 <img src="https://imgur.com/Ytrgwfr.png" width=700>
