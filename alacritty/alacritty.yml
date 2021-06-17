@@ -1,0 +1,56 @@
+live_config_reload: true
+
+env:
+  TERM: alacritty
+
+window:
+  padding:
+    x: 30
+    y: 30
+
+  title: Alacritty
+
+  class:
+    instance: Alacritty
+    general:  Alacritty
+
+font:
+  normal:
+    family: FiraCode Nerd Font
+    style:  Regular
+
+  size: 9.0
+
+cursor:
+  style:            Block
+  unfocused_hollow: true
+  thickness:        0.15
+
+colors:
+  primary:
+    background: '#151b22'
+    foreground: '#a8a8a8'
+
+  cursor:
+    text:   '#151b22'
+    cursor: '#a8a8a8'
+
+  normal:
+    black:   '#151b22'
+    red:     '#5d7481'
+    green:   '#6c748f'
+    yellow:  '#a7b4db'
+    blue:    '#42566e'
+    magenta: '#949be3'
+    cyan:    '#86a9c2'
+    white:   '#a8a8a8'
+
+  bright:
+    black:   '#151b22'
+    red:     '#5d7481'
+    green:   '#6c748f'
+    yellow:  '#a7b4db'
+    blue:    '#42566e'
+    magenta: '#949be3'
+    cyan:    '#86a9c2'
+    white:   '#a8a8a8'

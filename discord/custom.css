@@ -1,0 +1,59 @@
+:root {
+  --background-primary : #151b22;
+  --background-secondary : #151b22;
+  --background-secondary-alt : #10151b;
+  --background-tertiary : #10151b;
+  --background-floating : #10151b;
+  --header-primary : #a8a8a8;
+
+  --interactive-normal : #a8a8a8;
+  --interactive-hover : #ffffff;
+  --interactive-active : #ffffff;
+  --interactive-muted : #505050;
+
+  --text-normal : #dcddde;
+  --text-link : #93c4ff;
+  --text-muted : #a8a8a8;
+
+  --scrollbar-auto-thumb : #283341;
+  --scrollbar-auto-track : #212a35;
+
+  --channeltextarea-background : #151b22;
+
+  --text-warning : #6280a5;
+
+  --brand-experiment : #6280a5 !important;
+}
+
+.container-1D34oG > div {
+  background-color : var(--background-primary);
+}
+
+.item-3HknzM[aria-label~=Add] {
+  background-color : #42566e !important;
+}
+
+.sidebar-2K8pFh {
+  width : 0;
+  transition : width 0.5s;
+}
+
+.guilds-1SWlCJ:hover + .base-3dtUhz .sidebar-2K8pFh,
+.sidebar-2K8pFh:hover,
+.guilds-1SWlCJ:focus-within + .base-3dtUhz .sidebar-2K8pFh,
+.sidebar-2K8pFh:focus-within {
+  width : 240px !important;
+}
+
+.membersWrap-2h-GB4 {
+  min-width : 0;
+}
+
+.panels-j1Uci_ {
+  border-radius: 0 15px 0 0;
+}
+
+.root-1gCeng,
+.footer-2gL1pp {
+  background-color: var(--background-primary) !important;
+}

@@ -1,0 +1,20 @@
+lines.color: a8a8a8
+patch.edgecolor: a8a8a8
+
+text.color: a8a8a8
+
+axes.facecolor: 151b22
+axes.edgecolor: a8a8a8
+axes.labelcolor: a8a8a8
+axes.prop_cycle: cycler('color', ['8fbcbb', '81a1c1', 'bf616a', 'd08770', 'ebcb8b', 'a3be8c', 'b48ead', 'd8dee9'])
+
+xtick.color: a8a8a8
+ytick.color: a8a8a8
+
+grid.color: 2c3746
+
+figure.facecolor: 151b22
+figure.edgecolor: black
+
+savefig.facecolor: 151b22
+savefig.edgecolor: black
