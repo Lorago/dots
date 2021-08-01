@@ -134,147 +134,6 @@ local tasklist_buttons = gears.table.join(
 	end)
 )
 
--- Everything related to the battery bar.
-mybatterybar = wibox.widget {
-	{
-		{
-			{
-				{
-					align  = 'center',
-					valign = 'center',
-					widget = wibox.widget.textbox,
-					font = beautiful.font_big,
-					text = "",
-					id = "icon"
-				},
-				widget = wibox.container.margin,
-				left = 10,
-			},
-			{
-				{
-					{
-						id = "progress_bar",
-						widget = wibox.widget.progressbar,
-						forced_width = 80,
-						shape = gears.shape.rounded_bar,
-						background_color = beautiful.secondary
-					},
-					{
-						id = "text_box",
-						align  = 'center',
-						valign = 'center',
-						widget = wibox.widget.textbox,
-					},
-					widget = wibox.widget,
-					layout = wibox.layout.stack
-				},
-				widget = wibox.container.margin,
-				top    = 4,
-				bottom = 4,
-				left   = 4,
-				right  = 4,
-			},
-			widget = wibox.widget,
-			layout = wibox.layout.fixed.horizontal
-		},
-		widget = wibox.container.background,
-		shape = gears.shape.rounded_bar,
-		bg = beautiful.secondary
-	},
-	widget = wibox.container.margin,
-	top = 1,
-	bottom = 1
-}
-
-function get_battery_icon()
-	local battery = help_utils.get_battery()
-	local status = help_utils.get_battery_status()
-
-	local battery_icons
-	local n_icons
-	if status == "Charging" then	
-		battery_icons = {
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		}
-		n_icons = 7
-	else
-		battery_icons = {
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		}
-		n_icons = 10
-	end
-	local icon_index = math.floor(battery/100 * (n_icons-1)+1)
-	local icon = battery_icons[icon_index]
-	return icon
-end
-
-hovering_battery = false
-function update_battery()
-	local battery = help_utils.get_battery()
-
-	if hovering_battery then
-		local textbox = mybatterybar:get_children_by_id("text_box")[1]
-		textbox.text = battery.."%"
-	end
-
-	local progressbar = mybatterybar:get_children_by_id("progress_bar")[1]
-
-	local colors = {
-		beautiful.progress_bar_normal,
-		beautiful.secondary
-	}
-	progressbar:set_value(battery/100)
-	progressbar.color = {
-		type  = "linear",
-		from  = { 0, 0, 0 },
-		to 	  = { 90, 0, 0 },
-		stops = { { 0, colors[1] }, { battery/100, colors[2] } }
-	}
-    local icon_widget = mybatterybar:get_children_by_id("icon")[1]
- 	local icon = get_battery_icon()
-
-	icon_widget.text = icon.." "
-end
-
-update_battery()
-
-gears.timer {
-    timeout = 5,
-    call_now = true,
-    autostart = true,
-    callback = function()
-		update_battery()
-    end
-}
-
-mybatterybar:connect_signal("mouse::enter", function()
-	hovering_battery=true
-	update_battery()
-end)
-
-mybatterybar:connect_signal("mouse::leave", function()
-	hovering_battery=false
-	update_battery()
-
-	local textbox = mybatterybar:get_children_by_id("text_box")[1]
-	textbox.text = ""
-end)
-
 -- Everything related to the volume bar.
 myvolumebar = wibox.widget {
 	{
@@ -392,7 +251,7 @@ awful.screen.connect_for_each_screen(function(s)
 	))
 
 	-- Everything related to the taglist is here.
-	update_taglist = function(self, t, index, tags)
+	local update_taglist = function(self, t, index, tags)
 		local has_client = false
 		local has_focus = false
 
@@ -410,11 +269,11 @@ awful.screen.connect_for_each_screen(function(s)
 
 		self.fg = beautiful.foreground
 		if has_focus then
-			self:get_children_by_id('index_role')[1].markup = '<b> '..''..' </b>'
+			self:get_children_by_id('index_role')[1].markup = '<b> '..beautiful.char_focused_tag..' </b>'
+		elseif has_client then
+			self:get_children_by_id('index_role')[1].markup = '<b> '..beautiful.char_non_empty_tag..' </b>'
 		else
-			self:get_children_by_id('index_role')[1].markup = '<b> '..''..' </b>'
-		end
-		if not has_focus and not has_client then
+			self:get_children_by_id('index_role')[1].markup = '<b> '..beautiful.char_empty_tag..' </b>'
 			self.fg = beautiful.foreground_dark
 		end
 	end
@@ -430,6 +289,7 @@ awful.screen.connect_for_each_screen(function(s)
 							{
 								id     = 'index_role',
 								widget = wibox.widget.textbox,
+								font   = beautiful.font_taglist
 							},
 							widget  = wibox.container.margin,
 						},
@@ -536,8 +396,41 @@ awful.screen.connect_for_each_screen(function(s)
 		widget     = wibox.container.background,
 	}
 
-	-- Creates the wibox.
-	s.mywibox = awful.wibar({ position = "top", screen = s, height = 36 })
+
+
+
+
+	-- Wibars.
+	local sgeo = s.geometry
+	local gap = beautiful.useless_gap
+
+	local width = sgeo.width / 3 - gap * (2+2/3)
+	local height = 44
+
+	local args = {
+		x 	   	= sgeo.x + gap * 2,
+		y 	   	= sgeo.y + gap * 2,
+		screen 	= s,
+		width  	= width,
+		height 	= height,
+		visible = true,
+		border_width = beautiful.border_width,
+		border_color = beautiful.secondary,
+		shape = function(cr)
+			gears.shape.rounded_rect(cr,width,height,20)
+		end
+	}
+	s.leftwibox = wibox(args)
+
+	args.x = args.x + width + gap * 2
+	s.centerwibox = wibox(args)
+
+	args.x = args.x + width + gap * 2
+	s.rightwibox = wibox(args)
+
+	s.padding = {
+		top = s.leftwibox.y + s.leftwibox.height
+	}
 
 	tray = nil
 	if s == screen.primary then
@@ -545,43 +438,85 @@ awful.screen.connect_for_each_screen(function(s)
 	end
 
 	-- Creates the widgets.
-	s.mywibox:setup {
+	s.leftwibox:setup {
 		{
+			layout = wibox.layout.align.horizontal,
+			expand = "none",
+
+			-- Left.
 			{
-				layout = wibox.layout.align.horizontal,
-				expand = "none",
-
-				-- Left.
-				{
-					layout = wibox.layout.fixed.horizontal,
-					spacing = 8,
-					mylauncher,
-					s.mytaglist,
-				},
-
-				-- Middle.
-				s.mytasklist,
-
-				-- Right.
-				{
-					layout = wibox.layout.fixed.horizontal,
-					spacing = 8,
-					tray,
-					mybatterybar,
-					myvolumebar,
-					mytextclock,
-					s.mylayoutbox,
-				}
+				layout = wibox.layout.fixed.horizontal,
+				spacing = 8,
+				mylauncher,
 			},
-			bottom = 4,
-			top = 4,
-			left = 7,
-			right = 4,
-			color = beautiful.bg_normal,
-			widget = wibox.container.margin
+
+			-- Middle.
+			s.mytasklist,
+
+			-- Right.
+			{
+				layout = wibox.layout.fixed.horizontal,
+				spacing = 8,
+				s.mylayoutbox,
+			}
 		},
-		bottom = 3,
-		color = beautiful.secondary,
+		bottom = beautiful.border_width * 2 + 5,
+		top = 5,
+		left = 10,
+		right = beautiful.border_width * 2 + 10,
+		color = beautiful.bg_normal,
+		widget = wibox.container.margin
+	}
+
+	s.centerwibox:setup {
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "none",
+
+			-- Left.
+			nil,
+
+			-- Middle.
+			s.mytaglist,
+
+			-- Right.
+		},
+		bottom = beautiful.border_width * 2 + 5,
+		top = 5,
+		left = 10,
+		right = beautiful.border_width * 2 + 10,
+		color = beautiful.bg_normal,
+		widget = wibox.container.margin
+	}
+
+	s.rightwibox:setup {
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "none",
+
+			-- Left.
+			{
+				layout = wibox.layout.fixed.horizontal,
+				spacing = 8,
+				mytextclock,
+				tray,
+			},
+
+			-- Middle.
+			nil,
+
+			-- Right.
+			{
+				layout = wibox.layout.fixed.horizontal,
+				spacing = 8,
+				myvolumebar,
+			}
+		},
+		bottom = beautiful.border_width * 2 + 5,
+		top = 5,
+		left = 10,
+		right = beautiful.border_width * 2 + 10,
+		color = beautiful.bg_normal,
 		widget = wibox.container.margin
 	}
 end)

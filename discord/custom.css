@@ -1,28 +1,30 @@
 :root {
-  --background-primary : #151b22;
-  --background-secondary : #151b22;
-  --background-secondary-alt : #10151b;
-  --background-tertiary : #10151b;
-  --background-floating : #10151b;
+  --background-primary : #131313;
+  --background-secondary : var(--background-primary);
+  --background-secondary-alt : #101010;
+  --background-tertiary : var(--background-secondary-alt);
+  --background-floating : var(--background-secondary-alt);
   --header-primary : #a8a8a8;
 
-  --interactive-normal : #a8a8a8;
+  --interactive-normal : var(--header-primary);
   --interactive-hover : #ffffff;
-  --interactive-active : #ffffff;
+  --interactive-active : var(--interactive-hover);
   --interactive-muted : #505050;
 
   --text-normal : #dcddde;
-  --text-link : #93c4ff;
-  --text-muted : #a8a8a8;
+  --text-link : #92a28e;
+  --text-muted : var(--header-primary);
 
-  --scrollbar-auto-thumb : #283341;
-  --scrollbar-auto-track : #212a35;
+  --scrollbar-auto-thumb : #202020;
+  --scrollbar-auto-track : #191919;
 
-  --channeltextarea-background : #151b22;
+  --channeltextarea-background : var(--background-primary);
 
-  --text-warning : #6280a5;
+  --text-warning : #8c6983;
 
-  --brand-experiment : #6280a5 !important;
+  --brand-experiment : #8c6983 !important;
+
+  --add-friend : #8c6983 !important;
 }
 
 .container-1D34oG > div {
@@ -30,7 +32,7 @@
 }
 
 .item-3HknzM[aria-label~=Add] {
-  background-color : #42566e !important;
+  background-color : var(--add-friend) !important;
 }
 
 .sidebar-2K8pFh {

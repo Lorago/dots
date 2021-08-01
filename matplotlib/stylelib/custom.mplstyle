@@ -3,18 +3,18 @@ patch.edgecolor: a8a8a8
 
 text.color: a8a8a8
 
-axes.facecolor: 151b22
+axes.facecolor: 131313
 axes.edgecolor: a8a8a8
 axes.labelcolor: a8a8a8
-axes.prop_cycle: cycler('color', ['8fbcbb', '81a1c1', 'bf616a', 'd08770', 'ebcb8b', 'a3be8c', 'b48ead', 'd8dee9'])
+axes.prop_cycle: cycler('color', ['8c6983', '828793', '888293', '918795', '92a28e', '7d8f8c'])
 
 xtick.color: a8a8a8
 ytick.color: a8a8a8
 
 grid.color: 2c3746
 
-figure.facecolor: 151b22
+figure.facecolor: 131313
 figure.edgecolor: black
 
-savefig.facecolor: 151b22
+savefig.facecolor: 131313
 savefig.edgecolor: black

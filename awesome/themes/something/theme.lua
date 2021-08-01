@@ -1,3 +1,4 @@
+local naughty 	   = require("naughty")
 local xresources   = require("beautiful.xresources")
 local dpi          = xresources.apply_dpi
 local gears        = require("gears")
@@ -8,25 +9,26 @@ local theme = {}
 ------------
 -- colors --
 ------------
-theme.font                 = "FiraCode Nerd Font 10"
-theme.font_big             = "FiraCode Nerd Font 12"
+theme.font                 = "SFMono Nerd Font 10"
+theme.font_taglist         = "SFMono Nerd Font 13"
+theme.font_big             = "SFMono Nerd Font 15"
 
-theme.primary              = "#151b22"
-theme.primary_dark         = "#10151b"
+theme.primary              = "#131313"
+theme.primary_dark         = "#101010"
 
-theme.secondary            = "#212a35"
-theme.secondary_bright     = "#283341"
+theme.secondary            = "#1e1e1e"
+theme.secondary_bright     = "#2a2a2a"
 
 theme.foreground           = "#a8a8a8"
 theme.foreground_dark      = "#575064"
 theme.foreground_bright    = "#ffffff"
 
-theme.red                  = '#842539'
-theme.green                = '#6c748f'
-theme.yellow               = '#a7b4db'
-theme.blue                 = '#42566e'
-theme.magenta              = '#949be3'
-theme.cyan                 = '#86a9c2'
+theme.red                  = "#8c6983"
+theme.green                = "#828793"
+theme.yellow               = "#888293"
+theme.blue                 = "#918795"
+theme.magenta              = "#92a28e"
+theme.cyan                 = "#7d8f8c"
 
 theme.progress_bar_normal  = theme.blue
 theme.progress_bar_off     = theme.red
@@ -43,7 +45,7 @@ theme.fg_urgent            = theme.foreground_bright
 theme.fg_minimize          = theme.foreground
 
 theme.useless_gap          = dpi(20)
-theme.border_width         = dpi(3)
+theme.border_width         = dpi(4)
 theme.border_normal        = theme.secondary
 theme.border_focus         = theme.secondary_bright
 theme.border_marked        = theme.red
@@ -69,6 +71,21 @@ theme.tag_preview_client_border_color = theme.secondary
 theme.tag_preview_client_border_width = 2
 theme.tag_preview_widget_border_width = 2
 
+theme.tag_preview_widget_border_radius = 10
+theme.tag_preview_client_border_radius = 10
+
+-------------------
+-- notifications --
+-------------------
+
+theme.notification_max_height = dpi(80)
+theme.notification_bg 		  = theme.primary
+theme.notification_fg 		  = theme.foreground
+
+naughty.config.padding = 40
+naughty.config.spacing = 10
+naughty.config.defaults.border_width = dpi(4)
+
 -----------------
 -- other stuff --
 -----------------
@@ -76,7 +93,7 @@ theme.menu_submenu_icon = theme_path.."submenu.png"
 theme.menu_height 		= dpi(15)
 theme.menu_width  		= dpi(100)
 
-theme.wallpaper         = theme_path.."background.jpg"
+theme.wallpaper         = theme_path.."background.png"
 
 theme.layout_fairh      = theme_path.."layouts/fairhw.png"
 theme.layout_fairv      = theme_path.."layouts/fairvw.png"
@@ -97,8 +114,8 @@ theme.layout_cornerse   = theme_path.."layouts/cornersew.png"
 
 theme.icon = theme_path.."arch.png"
 
-theme.notification_max_height = dpi(80)
-theme.notification_bg 		  = theme.primary
-theme.notification_fg 		  = theme.foreground
+theme.char_focused_tag =  ""
+theme.char_non_empty_tag = ""
+theme.char_empty_tag = ""
 
 return theme

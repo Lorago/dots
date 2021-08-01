@@ -5,8 +5,8 @@ env:
 
 window:
   padding:
-    x: 30
-    y: 30
+    x: 40
+    y: 40
 
   title: Alacritty
 
@@ -16,41 +16,41 @@ window:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: SFMono Nerd Font Mono
     style:  Regular
 
-  size: 9.0
+  size: 13.0
 
 cursor:
-  style:            Block
+  style:            Beam
   unfocused_hollow: true
   thickness:        0.15
 
 colors:
   primary:
-    background: '#151b22'
+    background: '#131313'
     foreground: '#a8a8a8'
 
   cursor:
-    text:   '#151b22'
+    text:   '#131313'
     cursor: '#a8a8a8'
 
   normal:
-    black:   '#151b22'
-    red:     '#5d7481'
-    green:   '#6c748f'
-    yellow:  '#a7b4db'
-    blue:    '#42566e'
-    magenta: '#949be3'
-    cyan:    '#86a9c2'
+    black:   '#131313'
+    red:     '#8c6983'
+    green:   '#828793'
+    yellow:  '#888293'
+    blue:    '#918795'
+    magenta: '#92a28e'
+    cyan:    '#7d8f8c'
     white:   '#a8a8a8'
 
   bright:
-    black:   '#151b22'
-    red:     '#5d7481'
-    green:   '#6c748f'
-    yellow:  '#a7b4db'
-    blue:    '#42566e'
-    magenta: '#949be3'
-    cyan:    '#86a9c2'
+    black:   '#131313'
+    red:     '#9f849b'
+    green:   '#8f7777'
+    yellow:  '#9894ad'
+    blue:    '#a79cad'
+    magenta: '#b294bb'
+    cyan:    '#8d869e'
     white:   '#a8a8a8'

@@ -44,8 +44,8 @@ local awestore = require("awestore")
 -----------
 bling.widget.tag_preview.enable {
 	show_client_content = true,
-	x 	  = 10,
-	y 	  = 46,
+	x = 960 - 288 / 2, -- 288 is the width of the preview window
+	y = 90,
 	scale = 0.15,
 }
 
@@ -436,7 +436,8 @@ awful.rules.rules = {
 			keys 		 = clientkeys,
 			buttons 	 = clientbuttons,
 			screen 		 = awful.screen.preferred,
-			placement 	 = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered
+			placement 	 = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered,
+			titlebars_enables = true
 		}
 	},
 
@@ -462,6 +463,9 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
 	if awesome.startup and not c.size_hints.user_position and not c.size_hints.program_position then
 		awful.placement.no_offscreen(c)
+	end
+	c.shape = function(cr,w,h)
+		gears.shape.rounded_rect(cr,w,h,20)
 	end
 end)
 

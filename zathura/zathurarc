@@ -1,18 +1,18 @@
 set recolor true
 
-set default-bg '#151b22'
+set default-bg '#131313'
 set default-fg '#a8a8a8'
 
-set recolor-lightcolor '#151b22'
+set recolor-lightcolor '#131313'
 set recolor-darkcolor '#a8a8a8'
 
-set font "Fira Code Nerd Font normal 12"
+set font "SFMono Nerd Font Mono normal 12"
 
-set inputbar-bg '#151b22'
+set inputbar-bg '#131313'
 set inputbar-fg '#a8a8a8'
 
-set statusbar-bg '#151b22'
+set statusbar-bg '#131313'
 set statusbar-fg '#a8a8a8'
 
-set notification-bg '#151b22'
+set notification-bg '#131313'
 set notification-fg '#a8a8a8'
