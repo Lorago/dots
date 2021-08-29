@@ -28,15 +28,15 @@ cursor:
 
 colors:
   primary:
-    background: '#131313'
+    background: '#11171d'
     foreground: '#a8a8a8'
 
   cursor:
-    text:   '#131313'
+    text:   '#11171d'
     cursor: '#a8a8a8'
 
   normal:
-    black:   '#131313'
+    black:   '#11171d'
     red:     '#8c6983'
     green:   '#828793'
     yellow:  '#888293'
@@ -46,7 +46,7 @@ colors:
     white:   '#a8a8a8'
 
   bright:
-    black:   '#131313'
+    black:   '#11171d'
     red:     '#9f849b'
     green:   '#8f7777'
     yellow:  '#9894ad'

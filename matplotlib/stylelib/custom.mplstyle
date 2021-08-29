@@ -3,7 +3,7 @@ patch.edgecolor: a8a8a8
 
 text.color: a8a8a8
 
-axes.facecolor: 131313
+axes.facecolor: 11171d
 axes.edgecolor: a8a8a8
 axes.labelcolor: a8a8a8
 axes.prop_cycle: cycler('color', ['8c6983', '828793', '888293', '918795', '92a28e', '7d8f8c'])
@@ -11,10 +11,10 @@ axes.prop_cycle: cycler('color', ['8c6983', '828793', '888293', '918795', '92a28
 xtick.color: a8a8a8
 ytick.color: a8a8a8
 
-grid.color: 2c3746
+grid.color: 1d262d
 
-figure.facecolor: 131313
+figure.facecolor: 11171d
 figure.edgecolor: black
 
-savefig.facecolor: 131313
+savefig.facecolor: 11171d
 savefig.edgecolor: black

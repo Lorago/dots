@@ -4,7 +4,7 @@
 	}
 
 	body {
-		background-color: #131313 !important;
+		background-color: #11171d !important;
 	}
 
 	.logo-and-wordmark {
@@ -18,10 +18,10 @@
 	.search-handoff-button {
 		border-radius: 20px !important;
 		border-width: 4px !important;
-		border-color: #1e1e1e !important;
+		border-color: #131a21 !important;
 
 		background-size: 0px !important;
-		background-color: #131313 !important;
+		background-color: #11171d !important;
 
 		padding-inline-start: 10px !important;
 		padding-inline-end: 10px !important;
@@ -36,7 +36,7 @@
 	}
 
 	.search-wrapper input {
-		background-color: #131313 !important;
+		background-color: #11171d !important;
 		border-radius: 0px !important;
 
 		background-image: none !important;

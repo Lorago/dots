@@ -10,14 +10,14 @@ local theme = {}
 -- colors --
 ------------
 theme.font                 = "SFMono Nerd Font 10"
-theme.font_taglist         = "SFMono Nerd Font 13"
+theme.font_medium          = "SFMono Nerd Font 13"
 theme.font_big             = "SFMono Nerd Font 15"
 
-theme.primary              = "#131313"
-theme.primary_dark         = "#101010"
+theme.primary              = "#11171d"
+theme.primary_dark         = "#0c1115"
 
-theme.secondary            = "#1e1e1e"
-theme.secondary_bright     = "#2a2a2a"
+theme.secondary            = "#1d262d"
+theme.secondary_bright     = "#1f2931"
 
 theme.foreground           = "#a8a8a8"
 theme.foreground_dark      = "#575064"
@@ -44,8 +44,8 @@ theme.fg_focus             = theme.foreground_bright
 theme.fg_urgent            = theme.foreground_bright
 theme.fg_minimize          = theme.foreground
 
-theme.useless_gap          = dpi(20)
-theme.border_width         = dpi(4)
+theme.useless_gap          = dpi(10)
+theme.border_width         = 0
 theme.border_normal        = theme.secondary
 theme.border_focus         = theme.secondary_bright
 theme.border_marked        = theme.red
@@ -55,6 +55,15 @@ theme.wibar_fg             = theme.fg_normal
 
 theme.bg_systray           = theme.secondary
 theme.systray_icon_spacing = dpi(12)
+
+theme.tag_non_empty = theme.foreground
+theme.tag_empty = theme.secondary
+theme.tag_ind = theme.secondary_bright
+theme.tag_hover = "#ffffff"
+
+theme.volume_color_normal = "#398a4e"
+theme.volume_color_high = "#8a395b"
+theme.volume_color_muted = "#353d45"
 
 -----------
 -- bling --
@@ -68,11 +77,11 @@ theme.tag_preview_widget_bg = theme.primary
 theme.tag_preview_widget_border_color = theme.secondary
 theme.tag_preview_client_border_color = theme.secondary
 
-theme.tag_preview_client_border_width = 2
-theme.tag_preview_widget_border_width = 2
+theme.tag_preview_client_border_width = 0
+theme.tag_preview_widget_border_width = 0
 
-theme.tag_preview_widget_border_radius = 10
-theme.tag_preview_client_border_radius = 10
+theme.tag_preview_widget_border_radius = 5
+theme.tag_preview_client_border_radius = 5
 
 -------------------
 -- notifications --
@@ -82,16 +91,22 @@ theme.notification_max_height = dpi(80)
 theme.notification_bg 		  = theme.primary
 theme.notification_fg 		  = theme.foreground
 
-naughty.config.padding = 40
+naughty.config.padding = 20
 naughty.config.spacing = 10
-naughty.config.defaults.border_width = dpi(4)
+naughty.config.defaults.border_width = dpi(0)
+
+naughty.config.defaults.margin = 15
 
 -----------------
 -- other stuff --
 -----------------
 theme.menu_submenu_icon = theme_path.."submenu.png"
-theme.menu_height 		= dpi(15)
-theme.menu_width  		= dpi(100)
+theme.menu_height 		= dpi(28)
+theme.menu_width  		= dpi(180)
+theme.menu_font 		= theme.font
+
+theme.corner_radius 	= 10
+theme.bar_corner_radius = 22
 
 theme.wallpaper         = theme_path.."background.png"
 
@@ -111,11 +126,5 @@ theme.layout_cornernw   = theme_path.."layouts/cornernww.png"
 theme.layout_cornerne   = theme_path.."layouts/cornernew.png"
 theme.layout_cornersw   = theme_path.."layouts/cornersww.png"
 theme.layout_cornerse   = theme_path.."layouts/cornersew.png"
-
-theme.icon = theme_path.."arch.png"
-
-theme.char_focused_tag =  ""
-theme.char_non_empty_tag = ""
-theme.char_empty_tag = ""
 
 return theme

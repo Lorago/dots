@@ -39,29 +39,20 @@ beautiful.init(theme_path)
 local bling    = require("bling")
 local awestore = require("awestore")
 
+local nconf = naughty.config
+nconf.defaults.shape = function(cr, w, h)
+	gears.shape.rounded_rect(cr, w, h, 10)
+end
+
 -----------
 -- bling --
 -----------
 bling.widget.tag_preview.enable {
 	show_client_content = true,
-	x = 960 - 288 / 2, -- 288 is the width of the preview window
-	y = 90,
-	scale = 0.15,
+	x = 20,
+	y = 850,
+	scale = 0.15
 }
-
-------------------------------------
--- popups (volume and brightness) --
-------------------------------------
-local volume_popup = popup:new {
-	get_value = help_utils.get_volume,
-	get_toggled = help_utils.get_muted
-}
-awesome.connect_signal("volume_refresh", function() volume_popup:show() end)
-
-local brightness_popup = popup:new {
-	get_value = function() return help_utils.get_brightness(true) end,
-}
-awesome.connect_signal("brightness_refresh", function() brightness_popup:show() end)
 
 -----------------
 -- scratchpads --
@@ -113,7 +104,7 @@ local spotify_scratch = bling.module.scratchpad:new {
 }
 
 terminal   = "alacritty"
-editor	   = os.getenv("EDITOR") or "nvim"
+editor	   = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 modkey = "Mod4"
@@ -262,8 +253,6 @@ globalkeys = gears.table.join(
 	-- Application runner
 	awful.key({ modkey }, "d", function () awful.util.spawn("rofi -show drun") end,
 			  { description = "run rofi", group = "launcher" }),
-	--awful.key({ modkey }, "d", function () awful.util.spawn("dmenu_run_history") end,
-	--		  { description = "run dmenu", group = "launcher" }),
 
 	-- Audio
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -465,7 +454,7 @@ client.connect_signal("manage", function (c)
 		awful.placement.no_offscreen(c)
 	end
 	c.shape = function(cr,w,h)
-		gears.shape.rounded_rect(cr,w,h,20)
+		gears.shape.rounded_rect(cr,w,h,beautiful.corner_radius)
 	end
 end)
 

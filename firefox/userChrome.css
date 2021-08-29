@@ -6,27 +6,27 @@ window,
 #navigator-toolbox,
 #sidebar-box,
 #nav-bar {
-  background-color: #131313 !important;
+  background-color: #11171d !important;
   -moz-appearance: none !important;
   background-image: none !important;
   border: none !important;
 }
 
 .tab-background[selected="true"] {
-  background-color: #131313 !important;
+  background-color: #11171d !important;
   -moz-appearance: none !important;
   background-image: none !important;
   border: none !important;
 }
 
 .tab-background {
-  background-color: #101010 !important;
+  background-color: #0c1115 !important;
   border-radius: 0px !important;
   margin-block: 0px !important;
 }
 
 .tabbrowser-tab:hover .tab-background {
-  background-color: #1e1e1e !important;
+  background-color: #131a21 !important;
 }
 
 .tabbrowser-tab[fadein] {
@@ -42,7 +42,7 @@ window,
 }
 
 .tabbrowser-tab {
-  height: 40px !important;
+  height: 50px !important;
   z-index: 1000 !important;
   padding: none !important;
   padding-inline: 0px !important;
@@ -142,7 +142,7 @@ window,
 }
 
 #urlbar-results {
-  background-color: #1e1e1e !important;
+  background-color: #131a21 !important;
   border-radius: 10px !important;
 }
 

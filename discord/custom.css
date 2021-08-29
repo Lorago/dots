@@ -1,7 +1,7 @@
 :root {
-  --background-primary : #131313;
+  --background-primary : #11171d;
   --background-secondary : var(--background-primary);
-  --background-secondary-alt : #101010;
+  --background-secondary-alt : #0c1115;
   --background-tertiary : var(--background-secondary-alt);
   --background-floating : var(--background-secondary-alt);
   --header-primary : #a8a8a8;
@@ -15,10 +15,10 @@
   --text-link : #92a28e;
   --text-muted : var(--header-primary);
 
-  --scrollbar-auto-thumb : #202020;
-  --scrollbar-auto-track : #191919;
+  --scrollbar-auto-thumb : #1a242d;
+  --scrollbar-auto-track : #151d25;
 
-  --channeltextarea-background : var(--background-primary);
+  --channeltextarea-background :  var(--background-primary);
 
   --text-warning : #8c6983;
 
