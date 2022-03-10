@@ -14,6 +14,8 @@ local dpi			= xresources.apply_dpi
 local popup 		= require("popup")
 local help_utils 	= require("help_utils")
 
+local home_dir = os.getenv("HOME")
+
 if awesome.startup_errors then
 	naughty.notify({ preset = naughty.config.presets.critical,
 					 title = "Oops, there were errors during startup!",
@@ -33,7 +35,7 @@ do
 	end)
 end
 
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "something")
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", home_dir, "something")
 beautiful.init(theme_path)
 
 local bling    = require("bling")
@@ -153,12 +155,12 @@ function screenshot(specify_region)
 	if specify_region then
 		command = "sleep 0.2; "..command.." -s --freeze"
 	end
-	local target="/home/lorago/Pictures/Screenshots/%Y-%m-%d-%T.png"
+	local target=home_dir.."/Pictures/Screenshots/%Y-%m-%d-%T.png"
 	-- This code is a mess and needs to be changed.
 	awful.spawn.easy_async_with_shell(command.." "..target,
 		function(out,err)
 			if err == "" then
-				awful.spawn.easy_async_with_shell("notify-send \"Screenshot captured\" -i ~/Pictures/Screenshots/$(ls /home/lorago/Pictures/Screenshots/ -t | head -1)")
+				awful.spawn.easy_async_with_shell("notify-send \"Screenshot captured\" -i ~/Pictures/Screenshots/$(ls "..home_dir.."/Pictures/Screenshots/ -t | head -1)")
 			end
 		end)
 end
@@ -270,14 +272,14 @@ globalkeys = gears.table.join(
 
 	-- Brightness
 	awful.key({}, "XF86MonBrightnessUp", function()
-			awful.spawn.easy_async_with_shell("/home/lorago/scripts/brightness.sh up 700",
+			awful.spawn.easy_async_with_shell(home_dir.."/scripts/brightness.sh up 700",
 				function()
 					awesome.emit_signal("brightness_refresh")
 				end)
 		end, {description = "increase brightness", group = "brightness"}),
 
 	awful.key({}, "XF86MonBrightnessDown", function()
-			awful.spawn.easy_async_with_shell("/home/lorago/scripts/brightness.sh down 700",
+			awful.spawn.easy_async_with_shell(home_dir.."/scripts/brightness.sh down 700",
 				function()
 					awesome.emit_signal("brightness_refresh")
 				end)
